@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    Properties properties = new Properties()
+    if (project.rootProject.file('local.properties').exists()) {
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+    }
+
+    defaultConfig {
+        applicationId "com.example.moviedb"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            resValue ("string", "app_key", properties.getProperty("app.key", "254223156e25a2ac0d5e534734c3c611"))
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+    implementation "org.koin:koin-core:$rootProject.koin_version"
+    implementation "org.koin:koin-android:$rootProject.koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$rootProject.koin_version"
+    implementation "org.koin:koin-android-viewmodel:$rootProject.koin_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    implementation "com.jaredrummler:material-spinner:$rootProject.material_spinner_version"
+    implementation "com.google.code.gson:gson:$rootProject.gson_version"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit_gson_version"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+
+    implementation "androidx.paging:paging-runtime-ktx:$rootProject.paging_version"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$rootProject.swipe_refresh_version"
+    implementation "io.coil-kt:coil:$rootProject.coil_version"
+
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutinesTest_version"
+    testImplementation "io.mockk:mockk:$rootProject.mockK_version"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.coreTesting_version"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.testExtJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTesting_version"
+}

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MovieDB</string>
+
+    <string name="movie_list_empty">No movies found. Try again later.</string>
+    <string name="movie_list_title">Movies</string>
+    <string name="movie_btn_try_again">Try Again</string>
+    <string name="description">Description</string>
+    <string name="generic_error">Ops! Something got wrong, please try again!</string>
+    <string name="retry">Try again</string>
+
+</resources>

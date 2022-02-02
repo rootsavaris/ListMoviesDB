@@ -26,7 +26,7 @@ android {
 
     buildTypes {
         debug {
-            resValue ("string", "app_key", properties.getProperty("app.key", "254223156e25a2ac0d5e534734c3c611"))
+            resValue ("string", "app_key", properties.getProperty("app.key", ""))
         }
         release {
             minifyEnabled false

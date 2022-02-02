@@ -5,22 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import coil.load
 import coil.transform.RoundedCornersTransformation
 import org.koin.android.viewmodel.ext.android.viewModel
-import com.example.moviedb.base.BaseFragment
 import com.example.moviedb.databinding.FragmentMovieDetailBinding
 import kotlinx.coroutines.flow.collectLatest
 import androidx.navigation.fragment.findNavController
+import coil.load
 import com.example.moviedb.R
 import com.example.moviedb.utils.BASE_IMAGE_URL
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collect
 
-
-class DetailFragment : BaseFragment() {
+class DetailFragment : Fragment() {
 
     private var _binding: FragmentMovieDetailBinding? = null
     private val binding: FragmentMovieDetailBinding

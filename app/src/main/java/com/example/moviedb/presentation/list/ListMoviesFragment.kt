@@ -5,20 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
 import org.koin.android.viewmodel.ext.android.viewModel
 import androidx.paging.LoadState
 import com.example.moviedb.R
-import com.example.moviedb.base.BaseFragment
 import com.example.moviedb.databinding.FragmentMoviesBinding
 import com.example.moviedb.utils.getDivider
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collect
 import java.lang.Boolean.TRUE
 
-class ListMoviesFragment : BaseFragment() {
+class ListMoviesFragment : Fragment() {
 
     private var _binding: FragmentMoviesBinding? = null
     private val binding: FragmentMoviesBinding

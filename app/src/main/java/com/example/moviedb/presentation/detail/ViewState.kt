@@ -9,11 +9,7 @@ data class ViewState(
     val error: Boolean = false,
     val errorMessage: String? = null
 ){
-    /*
-    fun loadingOn(): ViewState = this.copy(isLoading = true, stepOneEnable = false, clearFields = false)
-    fun successStep1(localCurrency: String): ViewState = this.copy(isLoading = false, stepTwoEnable = true, localCurrency = localCurrency, editButtonEnable = true)
-    fun failureStep1(): ViewState = this.copy(isLoading = false, stepOneEnable = true)
-    fun enableToSend(): ViewState = this.copy(stepTwoEnable = false, btnSendEnable = true)
-    fun loadInitialState(): ViewState = this.copy(isLoading = false, stepOneEnable = true, stepTwoEnable = false, btnSendEnable = false, localCurrency = null, clearFields = true, editButtonEnable = false)
-    */
+    fun loadInitial(): ViewState = this.copy(isLoading = true, success = false, error = false)
+    fun loadSuccess(movie: Movie): ViewState = this.copy(isLoading = false, success = true, successValue = movie)
+    fun loadFailure(message: String): ViewState = this.copy(isLoading = false, error = true, errorMessage = message)
 }

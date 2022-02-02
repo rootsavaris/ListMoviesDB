@@ -5,9 +5,7 @@ import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.moviedb.base.BaseViewModel
-import com.example.moviedb.data.IRepository
 import com.example.moviedb.domain.Movie
-import com.example.moviedb.framework.network.model.MovieResponse
 import com.example.moviedb.interactors.GetMoviesUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow

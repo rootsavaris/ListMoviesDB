@@ -14,7 +14,7 @@ class DetailMovieViewModel(
     private val getMovieUseCase: GetMovieUseCase
 ) : BaseViewModel(application) {
 
-    private val _viewState = MutableStateFlow<ViewState>(ViewState())
+    private val _viewState = MutableStateFlow(ViewState())
     val viewState = _viewState.asStateFlow()
 
     private val eventChannel = Channel<Event>(Channel.BUFFERED)
@@ -23,15 +23,15 @@ class DetailMovieViewModel(
     fun getMovie(movieId: Int) = viewModelScope.launch {
         getMovieUseCase.invoke(movieId).collect{ result ->
             if (result is ApiResponse.Success){
-                _viewState.value = _viewState.value.copy(isLoading = false, success = true, successValue = result.data)
+                _viewState.value = _viewState.value.loadSuccess(result.data)
             } else if (result is ApiResponse.Failure){
-                _viewState.value = _viewState.value.copy(isLoading = false, error = true, errorMessage = result.e.toString())
+                _viewState.value = _viewState.value.loadFailure(result.e.toString())
             }
         }
     }
 
     fun tryAgain(movieId: Int){
-        _viewState.value = _viewState.value.copy(isLoading = true, success = false, error = false)
+        _viewState.value = _viewState.value.loadInitial()
         getMovie(movieId)
     }
 

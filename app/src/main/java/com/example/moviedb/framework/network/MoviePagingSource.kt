@@ -16,7 +16,7 @@ class MoviePagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieResponse> {
         val pageNumber = params.key ?: STARTING_PAGE_INDEX
         return try {
-            delay(1000)
+            delay(1000) /* include delay to show loading effect */
             val response = service.getMovies(page = pageNumber)
             val movies = response.results
             val nextKey =
